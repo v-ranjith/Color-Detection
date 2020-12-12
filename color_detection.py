@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 
 # --------------------------------------------------------------------------
+#code modified by Ranjith V
 
 img_path = 'colorpic.jpg'
 csv_path = 'colors.csv'
