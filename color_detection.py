@@ -5,11 +5,11 @@ import pandas as pd
 import numpy as np
 
 # --------------------------------------------------------------------------
-# source - pyGuru on youtube
+# ref - pyGuru on youtube
 # code modified by Ranjith V
 
 #path of the sample image in which the colors are to be detected
-img_path = 'sample1.jpg'
+img_path = 'sample4.jpg'
 #path of the .csv file where the details of the colors such as color name, color code, RGB values are stored
 csv_path = 'colors.csv'
 
@@ -18,19 +18,19 @@ csv_path = 'colors.csv'
 # reading csv file
 index = ['color', 'color_name', 'hex', 'R', 'G', 'B']
 #DataFrame
-df = pd.read_csv(csv_path, names=index, header=None)
+df = pd.read_csv(csv_path, names = index, header = None)
 
 # reading image
 blnk_img = np.zeros((120, 800, 3))
 img = cv2.imread(img_path)
-img = cv2.resize(img, (800,600))
+img = cv2.resize(img, (800, 600))
 
 #declaring global variables
 moved = False
 r = g = b = xpos = ypos = 0
 
 #function to calculate minimum distance from all colors and get the most matching color
-def get_color_name(R,G,B):
+def get_color_name(R, G, B):
 	minimum = 1000
 	for i in range(len(df)):
 		d = abs(R - int(df.loc[i,'R'])) + abs(G - int(df.loc[i,'G'])) + abs(B - int(df.loc[i,'B']))
@@ -61,8 +61,8 @@ while True:
 	cv2.imshow('Image', img)
 	cv2.imshow('Color Details', blnk_img)
 	if moved:
-		#cv2.rectangle(image, startpoint, endpoint, color, 		thickness)
-		cv2.rectangle(blnk_img, (20,20), (700,100), (255,255,255), -1)
+		#cv2.rectangle(image, startpoint, endpoint, 	color, 		thickness)
+		cv2.rectangle(blnk_img, (20, 20), (700, 100), (255, 255, 255), -1)
 		#	Note: thickness = -1 fills entire rectangle 
 
 		#Creating text string to display( Color name and RGB values )
@@ -82,3 +82,6 @@ while True:
 
 #destroys all windows
 cv2.destroyAllWindows()
+
+
+#THANK YOU
